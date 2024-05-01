@@ -1,38 +1,11 @@
 {
-	"name": "@vscode/jupyter-ipywidgets8",
-	"version": "0.0.1",
-	"private": false,
-	"keywords": [
-		"land"
-	],
-	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandJupyterIpywidgets#readme",
-	"bugs": {
-		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandJupyterIpywidgets/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/LandJupyterIpywidgets.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
 	"author": {
-		"name": "🌆 — Land —",
 		"email": "Land@PlayForm.Cloud",
+		"name": "🌆 — Land —",
 		"url": "HTTPS://Land.PlayForm.Cloud"
 	},
-	"type": "module",
-	"main": "dist/ipywidgets.js",
-	"files": [
-		"dist/*.js",
-		"ThirdPartyNotices-Repository.txt"
-	],
-	"scripts": {
-		"Document": "Document 'Source/**/*.ts'",
-		"analyze": "node scripts/postInstall.js &&  npm run clean && tsc && webpack --json > out/stats.json && npx webpack-bundle-analyzer out/stats.json -p=8981",
-		"build": "node scripts/postInstall.js && npm run clean && tsc && webpack --mode=production",
-		"build:dev": "node scripts/postInstall.js &&  npm run clean && tsc && webpack",
-		"clean": "rimraf out && rimraf tsconfig.tsbuildinfo && rimraf dist",
-		"prepack": "npm run clean && npm run build",
-		"prepublishOnly": "Build 'Source/**/*.ts'"
+	"bugs": {
+		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandJupyterIpywidgets/issues"
 	},
 	"dependencies": {
 		"@jupyter-widgets/base": "6.0.7",
@@ -59,11 +32,38 @@
 		"rimraf": "5.0.5",
 		"style-loader": "4.0.0"
 	},
-	"publishConfig": {
-		"access": "public"
-	},
+	"files": [
+		"dist/*.js",
+		"ThirdPartyNotices-Repository.txt"
+	],
+	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandJupyterIpywidgets#readme",
+	"keywords": [
+		"land"
+	],
+	"license": "SEE LICENSE IN LICENSE",
+	"main": "dist/ipywidgets.js",
+	"name": "@vscode/jupyter-ipywidgets8",
 	"overrides-change-to-overrides-to-pin-child-dependencies-in-lock-file": {
 		"json5": "2.2.3",
 		"string_decoder": "1.3.0"
-	}
+	},
+	"private": false,
+	"publishConfig": {
+		"access": "public"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+HTTPS://github.com/CodeEditorLand/LandJupyterIpywidgets.git"
+	},
+	"scripts": {
+		"Document": "Document 'Source/**/*.ts'",
+		"analyze": "node scripts/postInstall.js &&  npm run clean && tsc && webpack --json > out/stats.json && npx webpack-bundle-analyzer out/stats.json -p=8981",
+		"build": "node scripts/postInstall.js && npm run clean && tsc && webpack --mode=production",
+		"build:dev": "node scripts/postInstall.js &&  npm run clean && tsc && webpack",
+		"clean": "rimraf out && rimraf tsconfig.tsbuildinfo && rimraf dist",
+		"prepack": "npm run clean && npm run build",
+		"prepublishOnly": "Build 'Source/**/*.ts'"
+	},
+	"type": "module",
+	"version": "0.0.1"
 }
