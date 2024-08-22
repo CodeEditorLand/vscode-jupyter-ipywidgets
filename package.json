@@ -1,4 +1,17 @@
 {
+	"name": "@vscode/jupyter-ipywidgets8",
+	"main": "dist/ipywidgets.js",
+	"files": [
+		"dist/*.js",
+		"ThirdPartyNotices-Repository.txt"
+	],
+	"scripts": {
+		"analyze": "node scripts/postInstall.js &&  npm run clean && tsc && webpack --json > out/stats.json && npx webpack-bundle-analyzer out/stats.json -p=8981",
+		"build": "node scripts/postInstall.js && npm run clean && tsc && webpack --mode=production",
+		"build:dev": "node scripts/postInstall.js &&  npm run clean && tsc && webpack",
+		"clean": "rimraf out && rimraf tsconfig.tsbuildinfo && rimraf dist",
+		"prepack": "npm run clean && npm run build"
+	},
 	"dependencies": {
 		"@jupyter-widgets/base": "6.0.8",
 		"@jupyter-widgets/controls": "5.0.9",
@@ -22,21 +35,8 @@
 		"rimraf": "6.0.1",
 		"style-loader": "4.0.0"
 	},
-	"files": [
-		"dist/*.js",
-		"ThirdPartyNotices-Repository.txt"
-	],
-	"main": "dist/ipywidgets.js",
-	"name": "@vscode/jupyter-ipywidgets8",
 	"overrides-change-to-overrides-to-pin-child-dependencies-in-lock-file": {
 		"json5": "2.2.3",
 		"string_decoder": "1.3.0"
-	},
-	"scripts": {
-		"analyze": "node scripts/postInstall.js &&  npm run clean && tsc && webpack --json > out/stats.json && npx webpack-bundle-analyzer out/stats.json -p=8981",
-		"build": "node scripts/postInstall.js && npm run clean && tsc && webpack --mode=production",
-		"build:dev": "node scripts/postInstall.js &&  npm run clean && tsc && webpack",
-		"clean": "rimraf out && rimraf tsconfig.tsbuildinfo && rimraf dist",
-		"prepack": "npm run clean && npm run build"
 	}
 }
