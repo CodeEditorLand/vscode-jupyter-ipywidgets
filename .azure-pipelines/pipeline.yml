@@ -1,0 +1,42 @@
+name: $(Date:yyyyMMdd)$(Rev:.r)
+
+trigger:
+  branches:
+    include:
+      - main
+pr: none
+
+resources:
+  repositories:
+    - repository: templates
+      type: github
+      name: microsoft/vscode-engineering
+      ref: main
+      endpoint: Monaco
+
+parameters:
+  - name: quality
+    displayName: Quality
+    type: string
+    default: latest
+    values:
+      - latest
+      - beta
+  - name: publishPackage
+    displayName: 🚀 Publish @vscode/jupyter-ipywidgets8
+    type: boolean
+    default: false
+
+extends:
+  template: azure-pipelines/npm-package/pipeline.yml@templates
+  parameters:
+    npmPackages:
+      - name: jupyter-ipywidgets8
+        testPlatforms: []
+
+        buildSteps:
+          - script: npm i
+            displayName: Install dependencies
+
+        tag: ${{ parameters.quality }}
+        publishPackage: ${{ parameters.publishPackage }}
