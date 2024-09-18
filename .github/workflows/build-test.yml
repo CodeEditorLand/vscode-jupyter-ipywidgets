@@ -1,0 +1,36 @@
+# Build and test script to run on PR and main build
+name: Build and Test
+
+permissions:
+  deployments: write
+
+on:
+  pull_request:
+    branches:
+      - main
+  check_run:
+    types: [rerequested, requested_action]
+
+env:
+  NODE_VERSION: 16.14.0
+  IS_CI: 1
+  SCREENSHOT_PATH: 'src/test/*-screenshot.png'
+
+jobs:
+  build:
+    name: Build Distribution
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Use Node ${{env.NODE_VERSION}}
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: ${{env.NODE_VERSION}}
+
+      - run: npm install
+        name: npm install
+
+      - run: npm run build
+        name: webpack for production
