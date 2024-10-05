@@ -6,8 +6,8 @@
 
 1. [Node.js](https://nodejs.org/) 16.14.2
 2. [npm](https://www.npmjs.com/) 8.15.1
-4. Windows, macOS, or Linux
-5. [Visual Studio Code](https://code.visualstudio.com/)
+3. Windows, macOS, or Linux
+4. [Visual Studio Code](https://code.visualstudio.com/)
 
 ### Setup
 
@@ -27,7 +27,10 @@ npx run build:dev
 
 ### Errors and Warnings
 
-TypeScript errors and warnings will be displayed in the `Problems` window of Visual Studio Code.
+TypeScript errors and warnings will be displayed in the `Problems` window of
+Visual Studio Code.
 
 ## Branches
-* `main` branch is to be used for the maintenance of the v8 package (`@vscode/jupyter-ipywidgets8`).
+
+-   `main` branch is to be used for the maintenance of the v8 package
+    (`@vscode/jupyter-ipywidgets8`).
