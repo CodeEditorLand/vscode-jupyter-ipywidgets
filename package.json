@@ -1,26 +1,26 @@
 {
 	"dependencies": {
-		"@jupyter-widgets/base": "^6.0.10",
-		"@jupyter-widgets/controls": "^5.0.11",
-		"@jupyter-widgets/jupyterlab-manager": "^5.0.13",
-		"@jupyter-widgets/output": "^6.0.10",
-		"@jupyter-widgets/schema": "^0.5.6",
-		"@jupyterlab/apputils": "^4.3.5",
-		"@jupyterlab/docregistry": "^4.2.5",
-		"@jupyterlab/notebook": "^4.2.5",
-		"@jupyterlab/rendermime": "^4.2.5",
-		"font-awesome": "^4.7.0"
+		"@jupyter-widgets/base": "6.0.10",
+		"@jupyter-widgets/controls": "5.0.11",
+		"@jupyter-widgets/jupyterlab-manager": "5.0.13",
+		"@jupyter-widgets/output": "6.0.10",
+		"@jupyter-widgets/schema": "0.5.6",
+		"@jupyterlab/apputils": "4.3.5",
+		"@jupyterlab/docregistry": "4.2.5",
+		"@jupyterlab/notebook": "4.2.5",
+		"@jupyterlab/rendermime": "4.2.5",
+		"font-awesome": "4.7.0"
 	},
 	"devDependencies": {
-		"css-loader": "^6.7.1",
-		"fs-extra": "^10.0.1",
-		"isarray": "^2.0.5",
-		"postcss": "^8.4.31",
-		"postcss-import": "^14.0.2",
-		"postcss-loader": "^8.1.1",
-		"postcss-preset-env": "^7.4.2",
-		"rimraf": "^3.0.2",
-		"style-loader": "^3.3.1"
+		"css-loader": "6.1.2",
+		"fs-extra": "11.2.0",
+		"isarray": "2.0.5",
+		"postcss": "8.4.47",
+		"postcss-import": "16.1.0",
+		"postcss-loader": "8.1.1",
+		"postcss-preset-env": "70.0.8",
+		"rimraf": "3.0.1",
+		"style-loader": "3.0.0"
 	},
 	"files": [
 		"dist/*.js",
