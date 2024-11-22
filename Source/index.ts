@@ -11,6 +11,7 @@ let loaded = false;
 function load() {
 	if (loaded) {
 		console.warn("Already loaded ipywidgets8");
+
 		return;
 	}
 	require("@lumino/widgets/style/index.css");

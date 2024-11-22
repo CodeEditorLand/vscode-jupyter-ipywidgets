@@ -59,6 +59,7 @@ export class DocumentContext
 	public type: string;
 	public lastModifiedCheckMargin: number;
 	readonly pendingInput: boolean;
+
 	constructor(public kernel: Kernel.IKernelConnection) {
 		// We are the session context
 

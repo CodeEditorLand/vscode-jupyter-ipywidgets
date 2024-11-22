@@ -11,6 +11,7 @@ import { ISignal } from "@lumino/signaling";
 
 export class SessionConnection implements ISessionConnection {
 	private _id = uuid();
+
 	constructor(public readonly kernel: Kernel.IKernelConnection) {}
 	propertyChanged: ISignal<this, "path" | "name" | "type">;
 	kernelChanged: ISignal<

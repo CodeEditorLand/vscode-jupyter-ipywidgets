@@ -81,6 +81,7 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 
         kernel.registerCommTarget(this.comm_target_name, async (comm, msg) => {
             const oldComm = new shims.services.Comm(comm);
+
             return this.handle_comm_open(oldComm, msg) as Promise<any>;
         });
     }
@@ -95,6 +96,7 @@ export class WidgetManager extends jupyterlab.WidgetManager {
         metadata?: any
     ): Promise<shims.services.Comm> {
         const comm = this.kernel.createComm(target_name, model_id);
+
         if (data || metadata) {
             comm.open(data, metadata);
         }
@@ -148,6 +150,7 @@ export class WidgetManager extends jupyterlab.WidgetManager {
             .loadClass(className, moduleName, moduleVersion)
             .then((r) => {
                 this.sendSuccess(className, moduleName, moduleVersion);
+
                 return r;
             })
             .catch(async (originalException) => {
@@ -163,15 +166,19 @@ export class WidgetManager extends jupyterlab.WidgetManager {
                         await this.scriptLoader.loadWidgetScript(moduleName, moduleVersion);
                     }
                     const m = await requireLoader(moduleName);
+
                     if (m && m[className]) {
                         this.sendSuccess(className, moduleName, moduleVersion);
+
                         return m[className];
                     }
                     this.logger(`WidgetManager: failed, Loading class ${className}:${moduleName}:${moduleVersion}`);
+
                     throw originalException;
                 } catch (ex) {
                     this.logger(`WidgetManager: failed, Loading class ${className}:${moduleName}:${moduleVersion}`);
                     this.sendError(className, moduleName, moduleVersion, originalException);
+
                     throw originalException;
                 }
             });
