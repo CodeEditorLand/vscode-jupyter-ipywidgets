@@ -13,7 +13,9 @@ export class SessionConnection implements ISessionConnection {
 	private _id = uuid();
 
 	constructor(public readonly kernel: Kernel.IKernelConnection) {}
+
 	propertyChanged: ISignal<this, "path" | "name" | "type">;
+
 	kernelChanged: ISignal<
 		this,
 		IChangedArgs<
@@ -22,36 +24,47 @@ export class SessionConnection implements ISessionConnection {
 			"kernel"
 		>
 	>;
+
 	public get statusChanged() {
 		return this.kernel.statusChanged as any;
 	}
+
 	public get connectionStatusChanged() {
 		return this.kernel.connectionStatusChanged as any;
 	}
+
 	public get iopubMessage() {
 		return this.kernel.iopubMessage as any;
 	}
+
 	public get unhandledMessage() {
 		return this.kernel.unhandledMessage as any;
 	}
+
 	public get anyMessage() {
 		return this.kernel.anyMessage as any;
 	}
+
 	public get id() {
 		return this._id;
 	}
+
 	public get path() {
 		return ""; // This would be the path to the notebook file
 	}
+
 	public get name() {
 		return this.kernel.name;
 	}
+
 	public get type() {
 		return "notebook";
 	}
+
 	public get serverSettings() {
 		return this.kernel.serverSettings;
 	}
+
 	public get model() {
 		return {
 			id: this._id,
@@ -61,32 +74,41 @@ export class SessionConnection implements ISessionConnection {
 			kernel: this.kernel.model,
 		};
 	}
+
 	public setPath(_path: string): Promise<void> {
 		throw new Error("Method not implemented.");
 	}
+
 	public setName(_name: string): Promise<void> {
 		throw new Error("Method not implemented.");
 	}
+
 	setType(_type: string): Promise<void> {
 		throw new Error("Method not implemented.");
 	}
+
 	changeKernel(
 		_options: Partial<Kernel.IModel>,
 	): Promise<Kernel.IKernelConnection> {
 		throw new Error("Method not implemented.");
 	}
+
 	shutdown(): Promise<void> {
 		throw new Error("Method not implemented.");
 	}
+
 	public get disposed() {
 		return this.kernel.disposed as any;
 	}
+
 	public get isDisposed() {
 		return this.kernel.isDisposed;
 	}
+
 	public get pendingInput() {
 		return this.kernel.pendingInput as any;
 	}
+
 	public dispose(): void {
 		// Don't actually dispose. We control disposal
 	}

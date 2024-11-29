@@ -31,9 +31,11 @@ const widgetsRegisteredInRequireJs = [
 
 export class WidgetManager extends jupyterlab.WidgetManager {
 	private _kernel: Kernel.IKernelConnection;
+
 	public get kernel(): Kernel.IKernelConnection {
 		return this._kernel;
 	}
+
 	public el: HTMLElement;
 
 	/**
@@ -55,16 +57,19 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 		el: HTMLElement,
 		private readonly scriptLoader: {
 			readonly widgetsRegisteredInRequireJs: Readonly<Set<string>>;
+
 			errorHandler(
 				className: string,
 				moduleName: string,
 				moduleVersion: string,
 				error: any,
 			): void;
+
 			loadWidgetScript(
 				moduleName: string,
 				moduleVersion: string,
 			): Promise<void>;
+
 			successHandler(
 				className: string,
 				moduleName: string,
@@ -89,8 +94,11 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 			}),
 			{ saveState: false },
 		);
+
 		this._kernel = kernel;
+
 		this.el = el;
+
 		this.rendermime.addFactory(
 			{
 				safe: false,
@@ -122,6 +130,7 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 		if (data || metadata) {
 			comm.open(data, metadata);
 		}
+
 		return Promise.resolve(new shims.services.Comm(comm));
 	}
 
@@ -138,10 +147,12 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 			// Used to load widget state.
 			return Promise.resolve({});
 		}
+
 		return this.kernel
 			.requestCommInfo({ target_name: this.comm_target_name })
 			.then((reply) => (reply.content as any).comms);
 	}
+
 	public async display_view(
 		_msg: any,
 		view: DOMWidgetView,
@@ -152,12 +163,15 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 		if (element) {
 			Widget.attach(view.luminoWidget, element);
 		}
+
 		return view.luminoWidget;
 	}
+
 	public async restoreWidgets(
 		notebook: INotebookModel,
 		options?: {
 			loadKernel: boolean;
+
 			loadNotebook: boolean;
 		},
 	): Promise<void> {
@@ -207,6 +221,7 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 							moduleVersion,
 						);
 					}
+
 					const m = await requireLoader(moduleName);
 
 					if (m && m[className]) {
@@ -214,6 +229,7 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 
 						return m[className];
 					}
+
 					this.logger(
 						`WidgetManager: failed, Loading class ${className}:${moduleName}:${moduleVersion}`,
 					);
@@ -223,6 +239,7 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 					this.logger(
 						`WidgetManager: failed, Loading class ${className}:${moduleName}:${moduleVersion}`,
 					);
+
 					this.sendError(
 						className,
 						moduleName,
@@ -236,6 +253,7 @@ export class WidgetManager extends jupyterlab.WidgetManager {
 
 		return result;
 	}
+
 	private sendSuccess(
 		className: string,
 		moduleName: string,

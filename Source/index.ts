@@ -14,16 +14,23 @@ function load() {
 
 		return;
 	}
+
 	require("@lumino/widgets/style/index.css");
+
 	require("@jupyter-widgets/base/css/index.css");
+
 	require("@jupyter-widgets/controls/css/widgets.css");
+
 	require("font-awesome/css/font-awesome.css");
 
 	// Export the following for `requirejs`.
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any, no-empty,@typescript-eslint/no-empty-function
 	const define = (window as any).define || function () {};
+
 	define("@jupyter-widgets/controls", () => widgets);
+
 	define("@jupyter-widgets/base", () => base);
+
 	define("@jupyter-widgets/output", () => outputWidgets);
 
 	// Create our window export. Necessary for the ipywidget code loading in the output to find our widget manager
@@ -32,6 +39,7 @@ function load() {
 	(window as any).vscIPyWidgets = {
 		WidgetManager,
 	};
+
 	loaded = true;
 }
 function unload() {
@@ -41,9 +49,13 @@ function unload() {
 
 	try {
 		const undef = (window as any).undef || function () {};
+
 		undef("@jupyter-widgets/controls");
+
 		undef("@jupyter-widgets/base");
+
 		undef("@jupyter-widgets/output");
+
 		loaded = false;
 	} catch (e) {
 		console.warn(`Failed to unload IPYWidgets 8`, e);
