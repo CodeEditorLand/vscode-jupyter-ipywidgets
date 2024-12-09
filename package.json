@@ -27,7 +27,7 @@
 		"ThirdPartyNotices-Repository.txt"
 	],
 	"main": "dist/ipywidgets.js",
-	"name": "@vscode/jupyter-ipywidgets8",
+	"name": "@codeeditorland/jupyter-ipywidgets8",
 	"overrides-change-to-overrides-to-pin-child-dependencies-in-lock-file": {
 		"json5": "2.2.3",
 		"string_decoder": "1.3.0"
